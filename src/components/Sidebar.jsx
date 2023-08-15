@@ -52,9 +52,9 @@ export default function Sidebar({ handleChatWith, viewProfile }) {
     const handleCheckboxChange = (contactId, email) => {
         setSelectedContacts((prevSelected) => {
             const alreadyExists = prevSelected.some(
-                (contact) => contact.contactId._id === contactId._id 
+                (contact) => contact.contactId._id === contactId._id
             );
-    
+
             if (alreadyExists) {
                 return prevSelected.filter(
                     (contact) => !(contact.contactId._id === contactId._id)
@@ -283,7 +283,7 @@ export default function Sidebar({ handleChatWith, viewProfile }) {
                                         <li
                                             key={contact._id}
                                             className="relative rounded-md p-3 hover:bg-gray-300 w-[90%]"
-                                            onClick={() => handleCheckboxChange({_id: contact._id,email:contact.email})}
+                                            onClick={() => handleCheckboxChange({ _id: contact._id, email: contact.email })}
                                         >
                                             <div className=" flex flex-row">
                                                 <div className="w-[25%] h-12">
@@ -306,8 +306,8 @@ export default function Sidebar({ handleChatWith, viewProfile }) {
                                                         name={`addToChat-${contact._id}`}
                                                         type="checkbox"
                                                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                        checked={selectedContacts.some((contact) => contact.contactId._id !== contact._id)}
-                                                        onChange={() => handleCheckboxChange({_id: contact._id,email:contact.email})}
+                                                        checked={selectedContacts.some((selectedContact) => selectedContact.contactId._id === contact._id)}
+                                                        onChange={() => handleCheckboxChange({ _id: contact._id, email: contact.email })}
                                                     />
 
                                                 </div>
